@@ -1,0 +1,17 @@
+services:
+  pyspark-notebook:
+    image: jupyter/pyspark-notebook:x86_64-ubuntu-22.04
+    container_name: shape_de_challange
+    ports:
+      - "8888:8888"
+    volumes:
+      - ${PWD}:/de_test
+    working_dir: /de_test
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - WORK_DIR=/de_test
+      - JUPYTER_PORT=8888
+      - APACHE_SPARK_VERSION=3.5.0
+      - HADOOP_VERSION=3
+      - SPARK_HOME=/usr/local/spark
+      - SPARK_OPTS=--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info
